@@ -11,7 +11,10 @@ class CreateLecturersTable extends Migration
         Schema::create('lecturers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('expertise'); // Choice: 'gov', 'dev', 'data'
+            $table->string('nidn')->nullable();
+            $table->string('position')->nullable();
+            $table->string('email')->nullable();
+            $table->string('expertise')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

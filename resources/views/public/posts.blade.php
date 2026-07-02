@@ -1,36 +1,28 @@
 @extends('layouts.public')
 
-@section('title', 'Berita & Pengumuman Terbaru - Sistem Informasi LPKIA')
+@section('title', 'Berita & Pengumuman - Administrasi Bisnis LPKIA')
 
 @section('styles')
 <style>
     .posts-page-header {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        background-color: var(--brand-teal-deep);
         color: white;
-        padding: 60px 0;
+        padding: 50px 0;
         text-align: center;
         margin-bottom: 50px;
         position: relative;
         overflow: hidden;
-    }
-    .posts-page-header::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
+        border-bottom: 3px solid var(--primary);
     }
     .posts-page-header h2 {
         font-size: 2.2rem;
-        font-weight: 800;
+        font-weight: 500;
         margin-bottom: 10px;
+        letter-spacing: -0.5px;
     }
     .posts-page-header p {
         font-size: 1rem;
-        opacity: 0.9;
+        color: var(--on-dark-muted);
         max-width: 600px;
         margin: 0 auto;
     }
@@ -43,31 +35,30 @@
         display: flex;
         list-style: none;
         padding-left: 0;
-        border-radius: 4px;
         gap: 8px;
     }
     .page-item .page-link {
         display: block;
         padding: 10px 18px;
-        color: var(--primary);
-        background-color: var(--bg-white);
-        border: 1px solid var(--border-color);
+        color: var(--ink);
+        background-color: var(--canvas);
+        border: 1px solid var(--hairline-strong);
         text-decoration: none;
-        border-radius: var(--border-radius);
+        border-radius: var(--rounded-md);
         font-weight: 600;
         font-size: 0.9rem;
-        transition: var(--transition);
+        transition: all 150ms ease;
     }
     .page-item.active .page-link, .page-item .page-link:hover {
         background-color: var(--primary);
-        color: white;
+        color: var(--on-primary);
         border-color: var(--primary);
     }
     .page-item.disabled .page-link {
-        color: var(--text-light);
+        color: var(--muted);
         pointer-events: none;
-        background-color: #F8FAFC;
-        border-color: var(--border-color);
+        background-color: var(--surface-soft);
+        border-color: var(--hairline);
     }
 </style>
 @endsection
@@ -77,7 +68,7 @@
     <div class="posts-page-header">
         <div class="container">
             <h2>Berita & Informasi Terbaru</h2>
-            <p>Ikuti perkembangan terbaru, agenda akademik, prestasi mahasiswa, dan pengumuman resmi Program Studi Sistem Informasi LPKIA.</p>
+            <p>Ikuti perkembangan terbaru, kegiatan kemahasiswaan, wirausaha mahasiswa, serta pengumuman resmi Program Studi Administrasi Bisnis LPKIA.</p>
         </div>
     </div>
 

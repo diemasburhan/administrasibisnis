@@ -16,8 +16,35 @@
                 <!-- Nama Dosen -->
                 <div class="form-group" style="margin-bottom: 20px;">
                     <label for="name" style="font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 8px;">Nama Lengkap & Gelar</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: Dr. Ahmad Sudrajat, M.T." value="{{ old('name', $lecturer->name ?? '') }}" required style="width: 100%; height: 42px;">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Contoh: Dr. H. Herwan, M.Si." value="{{ old('name', $lecturer->name ?? '') }}" required style="width: 100%; height: 42px;">
                     @error('name')
+                        <span style="color: var(--danger); font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- NIDN -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="nidn" style="font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 8px;">NIDN Dosen</label>
+                    <input type="text" name="nidn" id="nidn" class="form-control" placeholder="Contoh: 0408106201" value="{{ old('nidn', $lecturer->nidn ?? '') }}" style="width: 100%; height: 42px;">
+                    @error('nidn')
+                        <span style="color: var(--danger); font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Jabatan Struktural / Akademik -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="position" style="font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 8px;">Jabatan Struktural / Fungsional</label>
+                    <input type="text" name="position" id="position" class="form-control" placeholder="Contoh: Kepala Program Studi / Dosen Utama" value="{{ old('position', $lecturer->position ?? '') }}" style="width: 100%; height: 42px;">
+                    @error('position')
+                        <span style="color: var(--danger); font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Alamat Email -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="email" style="font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 8px;">Alamat Email Dosen</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Contoh: dosen@lpkia.ac.id" value="{{ old('email', $lecturer->email ?? '') }}" style="width: 100%; height: 42px;">
+                    @error('email')
                         <span style="color: var(--danger); font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px;">{{ $message }}</span>
                     @enderror
                 </div>
@@ -27,9 +54,9 @@
                     <label for="expertise" style="font-weight: 700; color: var(--primary-dark); display: block; margin-bottom: 8px;">Bidang Keahlian (Expertise)</label>
                     <select name="expertise" id="expertise" class="form-control" required style="width: 100%; height: 42px; padding: 6px 12px; font-size: 0.9rem;">
                         <option value="">Pilih Bidang Keahlian...</option>
-                        <option value="data" {{ old('expertise', $lecturer->expertise ?? '') === 'data' ? 'selected' : '' }}>Data Science & Analytics</option>
-                        <option value="dev" {{ old('expertise', $lecturer->expertise ?? '') === 'dev' ? 'selected' : '' }}>Software Engineering</option>
-                        <option value="gov" {{ old('expertise', $lecturer->expertise ?? '') === 'gov' ? 'selected' : '' }}>IT Governance</option>
+                        <option value="office" {{ old('expertise', $lecturer->expertise ?? '') === 'office' ? 'selected' : '' }}>Administrasi Perkantoran</option>
+                        <option value="entrepreneur" {{ old('expertise', $lecturer->expertise ?? '') === 'entrepreneur' ? 'selected' : '' }}>Kewirausahaan</option>
+                        <option value="digital" {{ old('expertise', $lecturer->expertise ?? '') === 'digital' ? 'selected' : '' }}>Bisnis Digital</option>
                     </select>
                     @error('expertise')
                         <span style="color: var(--danger); font-size: 0.8rem; font-weight: 600; display: block; margin-top: 5px;">{{ $message }}</span>

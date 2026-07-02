@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', $post->title . ' - Sistem Informasi LPKIA')
+@section('title', $post->title . ' - Administrasi Bisnis LPKIA')
 
 @section('styles')
 <style>
@@ -11,49 +11,49 @@
         margin-top: 40px;
     }
     .post-main-content {
-        background-color: var(--bg-white);
-        border-radius: var(--border-radius-lg);
+        background-color: var(--canvas);
+        border-radius: var(--rounded-lg);
         padding: 40px;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-2);
+        border: 1px solid var(--hairline);
     }
     .post-meta-details {
         display: flex;
         gap: 20px;
         font-size: 0.85rem;
-        color: var(--text-muted);
+        color: var(--steel);
         margin-bottom: 20px;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--hairline-soft);
         padding-bottom: 15px;
     }
     .post-featured-image {
         width: 100%;
         max-height: 400px;
         object-fit: cover;
-        border-radius: var(--border-radius);
+        border-radius: var(--rounded-md);
         margin-bottom: 30px;
     }
     .post-body-text {
         font-size: 1.05rem;
-        color: var(--text-dark);
+        color: var(--charcoal);
         line-height: 1.8;
     }
     .post-body-text p {
         margin-bottom: 20px;
     }
     .sidebar-widget {
-        background-color: var(--bg-white);
-        border-radius: var(--border-radius-lg);
+        background-color: var(--canvas);
+        border-radius: var(--rounded-lg);
         padding: 24px;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-2);
+        border: 1px solid var(--hairline);
         margin-bottom: 30px;
     }
     .sidebar-title {
         font-size: 1rem;
-        font-weight: 700;
-        color: var(--primary);
-        border-bottom: 2px solid var(--secondary);
+        font-weight: 600;
+        color: var(--brand-teal-mid);
+        border-bottom: 2px solid var(--primary);
         padding-bottom: 8px;
         margin-bottom: 15px;
     }
@@ -64,7 +64,7 @@
         display: flex;
         justify-content: space-between;
         padding: 8px 0;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--hairline-soft);
         font-size: 0.9rem;
     }
     .recent-posts-list {
@@ -75,35 +75,36 @@
         font-size: 0.88rem;
     }
     .recent-posts-list li a {
-        color: var(--primary);
+        color: var(--brand-teal-mid);
         font-weight: 600;
         line-height: 1.4;
         display: block;
+        text-decoration: none;
     }
     .recent-posts-list li a:hover {
-        color: var(--secondary);
+        color: var(--primary-deep);
     }
     .recent-posts-list li span {
         font-size: 0.75rem;
-        color: var(--text-muted);
+        color: var(--stone);
     }
     
     /* Comments section */
     .comments-wrapper {
         margin-top: 40px;
-        border-top: 1px solid var(--border-color);
+        border-top: 1px solid var(--hairline);
         padding-top: 30px;
     }
     .comments-title {
         font-size: 1.3rem;
-        font-weight: 800;
-        color: var(--primary);
+        font-weight: 600;
+        color: var(--ink);
         margin-bottom: 25px;
     }
     .comment-card {
-        background-color: #F8FAFC;
+        background-color: var(--surface-soft);
         padding: 20px;
-        border-radius: var(--border-radius);
+        border-radius: var(--rounded-md);
         margin-bottom: 20px;
         border-left: 4px solid var(--primary);
     }
@@ -115,21 +116,22 @@
     }
     .comment-author {
         font-weight: 700;
-        color: var(--primary);
+        color: var(--ink);
     }
     .comment-date {
-        color: var(--text-muted);
+        color: var(--stone);
     }
     .comment-body {
         font-size: 0.92rem;
     }
     
     .comment-form-card {
-        background-color: var(--bg-white);
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius-lg);
+        background-color: var(--canvas);
+        border: 1px solid var(--hairline);
+        border-radius: var(--rounded-lg);
         padding: 30px;
         margin-top: 45px;
+        box-shadow: var(--shadow-2);
     }
     
     @media(max-width: 768px) {

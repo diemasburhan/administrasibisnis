@@ -36,7 +36,10 @@ class LecturerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'expertise' => 'required|in:gov,dev,data',
+            'nidn' => 'nullable|string|max:50',
+            'position' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'expertise' => 'required|in:office,entrepreneur,digital',
             'photo_file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -50,6 +53,9 @@ class LecturerController extends Controller
 
         $lecturer = Lecturer::create([
             'name' => $request->name,
+            'nidn' => $request->nidn,
+            'position' => $request->position,
+            'email' => $request->email,
             'expertise' => $request->expertise,
             'photo' => $photoPath,
         ]);
@@ -75,7 +81,10 @@ class LecturerController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'expertise' => 'required|in:gov,dev,data',
+            'nidn' => 'nullable|string|max:50',
+            'position' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'expertise' => 'required|in:office,entrepreneur,digital',
             'photo_file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -92,6 +101,9 @@ class LecturerController extends Controller
 
         $lecturer->update([
             'name' => $request->name,
+            'nidn' => $request->nidn,
+            'position' => $request->position,
+            'email' => $request->email,
             'expertise' => $request->expertise,
             'photo' => $photoPath,
         ]);

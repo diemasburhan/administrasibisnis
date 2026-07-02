@@ -8,6 +8,9 @@ class Lecturer extends Model
 {
     protected $fillable = [
         'name',
+        'nidn',
+        'position',
+        'email',
         'expertise',
         'photo',
     ];

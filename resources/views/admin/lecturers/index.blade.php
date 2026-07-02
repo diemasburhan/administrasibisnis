@@ -21,9 +21,9 @@
                 
                 <select name="expertise" class="form-control" style="width: 220px; height: 38px; padding: 6px 12px; font-size: 0.85rem;" onchange="this.form.submit()">
                     <option value="">Semua Bidang Keahlian</option>
-                    <option value="data" {{ request('expertise') === 'data' ? 'selected' : '' }}>Data Science & Analytics</option>
-                    <option value="dev" {{ request('expertise') === 'dev' ? 'selected' : '' }}>Software Engineering</option>
-                    <option value="gov" {{ request('expertise') === 'gov' ? 'selected' : '' }}>IT Governance</option>
+                    <option value="office" {{ request('expertise') === 'office' ? 'selected' : '' }}>Administrasi Perkantoran</option>
+                    <option value="entrepreneur" {{ request('expertise') === 'entrepreneur' ? 'selected' : '' }}>Kewirausahaan</option>
+                    <option value="digital" {{ request('expertise') === 'digital' ? 'selected' : '' }}>Bisnis Digital</option>
                 </select>
 
                 @if(request('search') || request('expertise'))
@@ -40,6 +40,7 @@
                     <tr>
                         <th style="width: 80px; text-align: center;">Foto</th>
                         <th>Nama Dosen</th>
+                        <th>Jabatan & NIDN</th>
                         <th>Keahlian</th>
                         <th>Tanggal Terdaftar</th>
                         <th style="width: 120px; text-align: center;">Aksi</th>
@@ -63,12 +64,18 @@
                                 </a>
                             </td>
                             <td>
-                                @if($lecturer->expertise === 'data')
-                                    <span class="badge" style="background-color: #D1FAE5; color: #065F46;"><i class="fa-solid fa-chart-line"></i> Data Science & Analytics</span>
-                                @elseif($lecturer->expertise === 'dev')
-                                    <span class="badge" style="background-color: #DBEAFE; color: #1E40AF;"><i class="fa-solid fa-code"></i> Software Engineering</span>
+                                <div style="font-size: 0.9rem; font-weight: 500;">{{ $lecturer->position ?? '-' }}</div>
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">NIDN: {{ $lecturer->nidn ?? '-' }}</div>
+                            </td>
+                            <td>
+                                @if($lecturer->expertise === 'office')
+                                    <span class="badge" style="background-color: #ece0fd; color: var(--accent-purple);"><i class="fa-solid fa-briefcase"></i> Adm Perkantoran</span>
+                                @elseif($lecturer->expertise === 'entrepreneur')
+                                    <span class="badge" style="background-color: #ffebe5; color: var(--accent-orange);"><i class="fa-solid fa-lightbulb"></i> Kewirausahaan</span>
+                                @elseif($lecturer->expertise === 'digital')
+                                    <span class="badge" style="background-color: #e5ebff; color: var(--accent-blue);"><i class="fa-solid fa-store"></i> Bisnis Digital</span>
                                 @else
-                                    <span class="badge" style="background-color: #F5E6FF; color: #7C3AED;"><i class="fa-solid fa-shield-halved"></i> IT Governance</span>
+                                    <span class="badge" style="background-color: var(--surface-soft); color: var(--slate);"><i class="fa-solid fa-user"></i> Pengajar</span>
                                 @endif
                             </td>
                             <td style="font-size: 0.82rem; color: var(--text-muted);">

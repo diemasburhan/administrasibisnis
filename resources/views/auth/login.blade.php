@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portal Login - Sistem Informasi LPKIA</title>
+    <title>Portal Login - Administrasi Bisnis LPKIA</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,9 +12,9 @@
 
     <div class="auth-card">
         <div class="auth-header">
-            <i class="fa-solid fa-graduation-cap fa-3x" style="color: var(--secondary); margin-bottom: 15px;"></i>
-            <h2>Portal LPKIA</h2>
-            <p>Silakan masuk untuk mengelola portal informasi</p>
+            <span style="background-color: #00ed64; color: #001e2b; padding: 6px 16px; border-radius: 9999px; font-size: 1.5rem; font-weight: 800; display: inline-block; margin-bottom: 15px; font-family: 'Plus Jakarta Sans', sans-serif;">AB</span>
+            <h2>Portal Administrasi Bisnis</h2>
+            <p>Silakan masuk untuk mengelola konten perkuliahan</p>
         </div>
 
         @if(session('success'))
