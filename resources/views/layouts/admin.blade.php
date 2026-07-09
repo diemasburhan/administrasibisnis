@@ -60,6 +60,8 @@
                             <a href="{{ route('admin.pages.create') }}" class="admin-submenu-link"><i class="fa-solid fa-plus"></i> Add New</a>
                         </li>
                     </ul>
+                </li>
+
                 <!-- Lecturers Submenu -->
                 <li class="admin-menu-item {{ Request::is('admin/lecturers*') ? 'active' : '' }}">
                     <a href="#" class="admin-menu-link" onclick="toggleSubmenu('lecturersSubmenu', event)">
@@ -88,6 +90,28 @@
                         </li>
                         <li class="admin-submenu-item {{ Route::is('admin.org-members.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.org-members.create') }}" class="admin-submenu-link"><i class="fa-solid fa-plus"></i> Tambah Anggota</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="admin-menu-item {{ Request::is('admin/schedule*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.schedule.index') }}" class="admin-menu-link">
+                        <i class="fa-solid fa-calendar-days"></i> Jadwal Kelas
+                    </a>
+                </li>
+
+                <!-- Appearance Submenu -->
+                <li class="admin-menu-item {{ Request::is('admin/customizer*') || Request::is('admin/menus*') ? 'active' : '' }}">
+                    <a href="#" class="admin-menu-link" onclick="toggleSubmenu('appearanceSubmenu', event)">
+                        <i class="fa-solid fa-palette"></i> Tampilan
+                        <i class="fa-solid fa-chevron-down" style="margin-left: auto; font-size: 0.75rem;"></i>
+                    </a>
+                    <ul class="admin-submenu" id="appearanceSubmenu" style="display: {{ Request::is('admin/customizer*') || Request::is('admin/menus*') ? 'block' : 'none' }};">
+                        <li class="admin-submenu-item {{ Route::is('admin.customizer.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.customizer.index') }}" class="admin-submenu-link"><i class="fa-solid fa-desktop"></i> Customizer Beranda</a>
+                        </li>
+                        <li class="admin-submenu-item {{ Route::is('admin.menus.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.menus.index') }}" class="admin-submenu-link"><i class="fa-solid fa-compass"></i> Menu Navigasi</a>
                         </li>
                     </ul>
                 </li>

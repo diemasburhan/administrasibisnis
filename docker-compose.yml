@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adminbisnis_app
+    restart: unless-stopped
+    ports:
+      - "8100:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: adminbisnis_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: administrasibisnis
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: password
+      MYSQL_USER: adminbisnis_user
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:

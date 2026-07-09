@@ -42,4 +42,35 @@ class DashboardController extends Controller
             'stats'
         ));
     }
+
+    public function uploadImage(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . \Illuminate\Support\Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            
+            // Ensure folder exists
+            if (!file_exists(public_path('uploads/media'))) {
+                mkdir(public_path('uploads/media'), 0755, true);
+            }
+            
+            $file->move(public_path('uploads/media'), $filename);
+            $url = asset('uploads/media/' . $filename);
+
+            return response()->json([
+                'success' => true,
+                'url' => $url,
+                'message' => 'Gambar berhasil diunggah.'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Gagal mengunggah gambar.'
+        ], 400);
+    }
 }

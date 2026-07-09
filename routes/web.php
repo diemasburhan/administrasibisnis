@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\OrgMemberController;
+use App\Http\Controllers\Admin\CustomizerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('/upload-image', [DashboardController::class, 'uploadImage'])->name('admin.upload.image');
     
     // Posts CMS
     Route::post('/posts/bulk', [PostController::class, 'bulkAction'])->name('admin.posts.bulk');
@@ -55,4 +57,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
+
+    // Customizer & Menus
+    Route::get('/customizer', [CustomizerController::class, 'indexCustomizer'])->name('admin.customizer.index');
+    Route::post('/customizer', [CustomizerController::class, 'updateCustomizer'])->name('admin.customizer.update');
+    Route::get('/menus', [CustomizerController::class, 'indexMenu'])->name('admin.menus.index');
+    Route::post('/menus', [CustomizerController::class, 'updateMenu'])->name('admin.menus.update');
+
+    // Schedule Manager
+    Route::get('/schedule', [CustomizerController::class, 'indexSchedule'])->name('admin.schedule.index');
+    Route::post('/schedule', [CustomizerController::class, 'updateSchedule'])->name('admin.schedule.update');
 });
