@@ -85,6 +85,150 @@
         </div>
     </section>
 
+    <!-- Kaprodi Section -->
+    <section class="kaprodi-section">
+        <div class="container">
+            <h2 class="section-title">Kaprodi S1 & D3 Adbis</h2>
+            <div class="kaprodi-grid">
+                <!-- Kaprodi S1 -->
+                <div class="kaprodi-card">
+                    <span class="kaprodi-badge">Program S1</span>
+                    <div class="kaprodi-image-container">
+                        <img src="{{ asset('images/kaprodi-rini.png') }}" alt="Rini Ratnaningsih, S.Sos., M.M.">
+                    </div>
+                    <div class="kaprodi-info">
+                        <h3>Rini Ratnaningsih, S.Sos., M.M.</h3>
+                        <p class="kaprodi-role">Ketua Program Studi S1 Administrasi Bisnis</p>
+                        <div class="kaprodi-meta">
+                            <div>
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>Sinta ID: <a href="https://sinta.kemdikbud.go.id/authors/profile/6825863" target="_blank">6825863</a></span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-id-card"></i>
+                                <span>NIDN: 0409057502</span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:rini.ratnaningsih@lpkia.ac.id">rini.ratnaningsih@lpkia.ac.id</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kaprodi D3 -->
+                <div class="kaprodi-card">
+                    <span class="kaprodi-badge">Program D3</span>
+                    <div class="kaprodi-image-container">
+                        <img src="{{ asset('images/kaprodi-ine.png') }}" alt="Tengku Ine Hendriana, S.Pd, M.M.">
+                    </div>
+                    <div class="kaprodi-info">
+                        <h3>Tengku Ine Hendriana, S.Pd, M.M.</h3>
+                        <p class="kaprodi-role">Ketua Program Studi D3 Administrasi Bisnis</p>
+                        <div class="kaprodi-meta">
+                            <div>
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>Sinta ID: <a href="https://sinta.kemdikbud.go.id/authors/profile/6737406" target="_blank">6737406</a></span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-id-card"></i>
+                                <span>NIDN: 0407108901</span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:tengku.ine@lpkia.ac.id">tengku.ine@lpkia.ac.id</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peminatan Section -->
+    <section class="peminatan-section">
+        <div class="container">
+            <h2 class="section-title">Peminatan & Konsentrasi Bisnis</h2>
+            <div class="peminatan-grid">
+                <!-- Peminatan 1 -->
+                <div class="peminatan-card">
+                    <div class="peminatan-image-container">
+                        <img src="{{ asset('images/peminatan-ecommerce.png') }}" alt="Bisnis Digital & E-Commerce">
+                    </div>
+                    <div class="peminatan-info">
+                        <h3>Perdagangan Digital & E-Commerce</h3>
+                        <p class="peminatan-desc">
+                            Mampu merancang arsitektur operasional bisnis daring dan mengelola ekosistem perdagangan digital dengan mengintegrasikan sistem manajemen rantai pasok (supply chain), otomatisasi transaksi, serta analisis data perilaku konsumen untuk mengoptimalkan efisiensi operasional dan profitabilitas platform e-commerce.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Peminatan 2 -->
+                <div class="peminatan-card">
+                    <div class="peminatan-image-container">
+                        <img src="{{ asset('images/peminatan-marketing.png') }}" alt="Digital Marketing & MarTech">
+                    </div>
+                    <div class="peminatan-info">
+                        <h3>Pemasaran Digital & MarTech</h3>
+                        <p class="peminatan-desc">
+                            Mampu merumuskan strategi pemasaran digital berbasis data (data-driven marketing) dengan mengimplementasikan teknik optimasi kanal digital, visualisasi metrik performa pemasaran, serta pemanfaatan teknologi pemasaran (martech) untuk meningkatkan akuisisi, retensi pelanggan, dan ekuitas merek secara terukur.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Peminatan 3 -->
+                <div class="peminatan-card">
+                    <div class="peminatan-image-container">
+                        <img src="{{ asset('images/peminatan-tech.png') }}" alt="Business Analytics & Tech Solutions">
+                    </div>
+                    <div class="peminatan-info">
+                        <h3>Analisis Bisnis & Solusi IT</h3>
+                        <p class="peminatan-desc">
+                            Mampu menganalisis, merancang, serta mengimplementasikan solusi bisnis digital dan ekosistem teknologi informasi dengan mengintegrasikan rekayasa perangkat lunak, analisis dan visualisasi data besar (big data), serta infrastruktur teknologi informasi dan komunikasi untuk mendukung transformasi bisnis yang inovatif, efisien, dan berkelanjutan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="grid-2-col" style="align-items: center;">
+                <div>
+                    <div style="color: var(--brand-teal-mid); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">
+                        TENTANG PROGRAM STUDI
+                    </div>
+                    <h2 style="font-size: 2.2rem; color: var(--ink); margin-bottom: 20px; line-height: 1.2;">
+                        Mempersiapkan Karier di Era <span style="color: var(--brand-teal-mid)">Bisnis Digital</span>
+                    </h2>
+                    <p style="font-size: 1.05rem; color: var(--slate); margin-bottom: 15px;">
+                        Program Studi D3 Administrasi Bisnis LPKIA dirancang secara khusus untuk membekali mahasiswa dengan keterampilan administrasi perkantoran, kesekretariatan modern, kearsipan elektronik, dan pemasaran digital berbasis teknologi informasi.
+                    </p>
+                    <p style="font-size: 1.05rem; color: var(--slate); margin-bottom: 20px;">
+                        Kami menekankan pembelajaran praktikum (learning by doing) agar setiap lulusan tidak hanya menguasai teori bisnis, melainkan terampil mengeksekusi operasional kantor modern dan siap mendirikan usaha mandiri yang kreatif.
+                    </p>
+                    <a href="{{ route('public.page.show', 'profil-jurusan') }}" class="btn btn-secondary">
+                        Pelajari Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div style="background-color: var(--surface); padding: 40px; border-radius: var(--rounded-lg); border: 1px solid var(--hairline); box-shadow: var(--shadow-1);">
+                    <h3 style="font-size: 1.3rem; color: var(--brand-teal-mid); margin-bottom: 20px;"><i class="fa-solid fa-bullseye"></i> Visi Program Studi</h3>
+                    <p style="font-style: italic; font-size: 1.1rem; color: var(--ink); line-height: 1.7; margin-bottom: 25px;">
+                        "Menjadi Program Studi Administrasi Bisnis yang unggul dan terkemuka di tingkat nasional dalam menghasilkan tenaga profesional administrasi perkantoran digital yang berintegritas, mandiri, dan berjiwa wirausaha kreatif berbasis teknologi informasi pada tahun 2030."
+                    </p>
+                    <h3 style="font-size: 1.3rem; color: var(--brand-teal-mid); margin-bottom: 15px;"><i class="fa-solid fa-list-check"></i> Misi Utama</h3>
+                    <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: var(--slate);">
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Menyelenggarakan pendidikan vokasi administrasi bisnis berkualitas tinggi.</li>
+                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Melaksanakan penelitian terapan dan pengabdian dalam pengembangan kewirausahaan.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Membangun kemitraan strategis dengan dunia usaha, industri, dan asosiasi profesi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tri-Column Featured Section (Universo Layout) -->
     <section class="featured-columns-section">
         <div class="container featured-columns-grid">
@@ -158,67 +302,7 @@
         </div>
     </section>
 
-    <!-- Profile & Organization Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="grid-2-col" style="align-items: center; margin-bottom: 60px;">
-                <div>
-                    <div style="color: var(--brand-teal-mid); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">
-                        TENTANG PROGRAM STUDI
-                    </div>
-                    <h2 style="font-size: 2.2rem; color: var(--ink); margin-bottom: 20px; line-height: 1.2;">
-                        Mempersiapkan Karier di Era <span style="color: var(--brand-teal-mid)">Bisnis Digital</span>
-                    </h2>
-                    <p style="font-size: 1.05rem; color: var(--slate); margin-bottom: 15px;">
-                        Program Studi D3 Administrasi Bisnis LPKIA dirancang secara khusus untuk membekali mahasiswa dengan keterampilan administrasi perkantoran, kesekretariatan modern, kearsipan elektronik, dan pemasaran digital berbasis teknologi informasi.
-                    </p>
-                    <p style="font-size: 1.05rem; color: var(--slate); margin-bottom: 20px;">
-                        Kami menekankan pembelajaran praktikum (learning by doing) agar setiap lulusan tidak hanya menguasai teori bisnis, melainkan terampil mengeksekusi operasional kantor modern dan siap mendirikan usaha mandiri yang kreatif.
-                    </p>
-                    <a href="{{ route('public.page.show', 'profil-jurusan') }}" class="btn btn-secondary">
-                        Pelajari Selengkapnya <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div style="background-color: var(--surface); padding: 40px; border-radius: var(--rounded-lg); border: 1px solid var(--hairline); box-shadow: var(--shadow-1);">
-                    <h3 style="font-size: 1.3rem; color: var(--brand-teal-mid); margin-bottom: 20px;"><i class="fa-solid fa-bullseye"></i> Visi Program Studi</h3>
-                    <p style="font-style: italic; font-size: 1.1rem; color: var(--ink); line-height: 1.7; margin-bottom: 25px;">
-                        "Menjadi Program Studi Administrasi Bisnis yang unggul dan terkemuka di tingkat nasional dalam menghasilkan tenaga profesional administrasi perkantoran digital yang berintegritas, mandiri, dan berjiwa wirausaha kreatif berbasis teknologi informasi pada tahun 2030."
-                    </p>
-                    <h3 style="font-size: 1.3rem; color: var(--brand-teal-mid); margin-bottom: 15px;"><i class="fa-solid fa-list-check"></i> Misi Utama</h3>
-                    <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: var(--slate);">
-                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Menyelenggarakan pendidikan vokasi administrasi bisnis berkualitas tinggi.</li>
-                        <li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Melaksanakan penelitian terapan dan pengabdian dalam pengembangan kewirausahaan.</li>
-                        <li><i class="fa-solid fa-circle-check" style="color:var(--primary-deep); margin-right: 8px;"></i> Membangun kemitraan strategis dengan dunia usaha, industri, dan asosiasi profesi.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Organization Structure -->
-            <h2 class="section-title">Struktur Organisasi Program Studi</h2>
-            <div class="org-grid">
-                @forelse($orgMembers as $index => $member)
-                    <div class="org-card">
-                        <div class="org-avatar" style="color: var(--on-primary); background-color: var(--brand-teal-deep); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid var(--primary);">
-                            @if($member->photo)
-                                <img src="{{ asset($member->photo) }}" alt="{{ $member->name }}" style="width: 100%; height: 100%; object-fit: cover;">
-                            @else
-                                <i class="fa-solid {{ $index === 0 ? 'fa-user-tie' : ($index === 1 ? 'fa-user-gear' : 'fa-users-gear') }}"></i>
-                            @endif
-                        </div>
-                        <h4>{{ $member->name }}</h4>
-                        <div class="role">{{ $member->role }}</div>
-                        @if($member->nip)
-                            <div class="nip">NIP. {{ $member->nip }}</div>
-                        @endif
-                    </div>
-                @empty
-                    <div style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 20px;">
-                        Struktur organisasi belum diatur.
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </section>
 
     <!-- Faculty/Lecturer Section -->
     <section class="content-section" id="dosen" style="background-color: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
