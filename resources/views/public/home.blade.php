@@ -352,6 +352,87 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Testimoni Alumni Sukses</h2>
+            <p style="text-align: center; color: var(--steel); max-width: 600px; margin: -20px auto 40px; font-size: 0.95rem;">
+                Dengarkan langsung cerita sukses alumni kami yang telah berkarier di berbagai industri terkemuka setelah lulus dari Administrasi Bisnis LPKIA.
+            </p>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">
+                            "Kurikulum praktis di AB LPKIA sangat relevan dengan dunia kerja. Saya belajar banyak tentang digital office administration dan korespondensi bisnis modern yang langsung saya terapkan sehari-hari."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="{{ asset('images/alumni-1.png') }}" alt="Siti Rahma" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Siti Rahma, A.Md.AB.</h4>
+                            <p>Lulusan 2022 | Executive Secretary di PT Astra International</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">
+                            "Kombinasi bisnis, teknologi, dan kewirausahaan yang diajarkan membuat saya sangat percaya diri untuk merintis karier di industri digital marketing maupun membangun bisnis sendiri."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="{{ asset('images/alumni-2.png') }}" alt="Budi Santoso" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Budi Santoso, A.Md.AB.</h4>
+                            <p>Lulusan 2021 | Digital Marketing Specialist di Tokopedia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">
+                            "Dosen-dosennya adalah praktisi yang luar biasa. Dukungan dari inkubator bisnis dan bimbingan magang membantu saya mendapatkan pekerjaan sebelum resmi diwisuda."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="{{ asset('images/alumni-3.png') }}" alt="Dian Lestari" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Dian Lestari, A.Md.AB.</h4>
+                            <p>Lulusan 2023 | Office Administrator di Bank Mandiri</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Academics, Downloads & Schedule Table -->
     <section class="content-section" id="unduh-dokumen">
         <div class="container">
