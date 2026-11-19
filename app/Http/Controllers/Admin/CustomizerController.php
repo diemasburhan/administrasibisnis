@@ -393,4 +393,88 @@ class CustomizerController extends Controller
 
         return redirect()->route('admin.schedule.index')->with('success', 'Jadwal Kelas berhasil diperbarui.');
     }
+
+    /**
+     * Get the merged Tri-Column configuration with defaults.
+     */
+    protected function getTriColumnConfig()
+    {
+        $triColumnContent = json_decode(Setting::get('homepage_tricolumn_content', '{}'), true);
+        if (!is_array($triColumnContent)) {
+            $triColumnContent = [];
+        }
+
+        $triColumnDefaults = [
+            'col1_title' => 'Berita Terbaru',
+            'col1_show_news' => true,
+            'col2_title' => 'Agenda & Event',
+            'col2_events' => [
+                ['day' => '15', 'month' => 'Jul', 'title' => 'Workshop Business Plan & Tenant Inkubator', 'meta' => '09:00 - selesai | Aula LPKIA'],
+                ['day' => '10', 'month' => 'Agt', 'title' => 'Campus Hiring & Rekrutmen Bersama BUMN', 'meta' => '08:30 - selesai | Lab Perkantoran'],
+                ['day' => '01', 'month' => 'Sep', 'title' => 'PKKMB & Orientasi Mahasiswa Baru Administrasi Bisnis', 'meta' => '07:30 - selesai | Kampus LPKIA']
+            ],
+            'col3_title' => 'Tentang Program Studi',
+            'col3_text' => 'Selamat datang di Program Studi Administrasi Bisnis LPKIA Bandung. Kami mempersiapkan tenaga ahli administrasi perkantoran unggul dan wirausahawan mandiri yang menguasai perangkat digital.',
+            'col3_link_url' => '/page/profil-jurusan',
+            'col3_link_label' => 'Pelajari Selengkapnya'
+        ];
+
+        return array_merge($triColumnDefaults, $triColumnContent);
+    }
+
+    /**
+     * Display the Events & Kegiatan Manager.
+     */
+    public function indexEvents()
+    {
+        $triColumn = $this->getTriColumnConfig();
+
+        return view('admin.events.index', [
+            'eventTitle' => $triColumn['col2_title'],
+            'events' => $triColumn['col2_events'],
+        ]);
+    }
+
+    /**
+     * Update the Events & Kegiatan settings.
+     */
+    public function updateEvents(Request $request)
+    {
+        $request->validate([
+            'col2_title' => 'required|string|max:255',
+            'events' => 'nullable|array',
+            'events.*.day' => 'nullable|string|max:20',
+            'events.*.month' => 'nullable|string|max:20',
+            'events.*.title' => 'nullable|string|max:255',
+            'events.*.meta' => 'nullable|string|max:255',
+        ]);
+
+        $triColumnData = $this->getTriColumnConfig();
+        $triColumnData['col2_title'] = $request->col2_title;
+
+        $events = [];
+        if ($request->has('events') && is_array($request->events)) {
+            foreach ($request->events as $event) {
+                if (!empty($event['title'])) {
+                    $events[] = [
+                        'day' => $event['day'] ?? '',
+                        'month' => $event['month'] ?? '',
+                        'title' => $event['title'] ?? '',
+                        'meta' => $event['meta'] ?? '',
+                    ];
+                }
+            }
+        }
+        $triColumnData['col2_events'] = $events;
+
+        Setting::set('homepage_tricolumn_content', json_encode($triColumnData));
+
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'activity' => 'Update Events & Kegiatan',
+            'details' => 'Updated Agenda & Event list in Event & Kegiatan manager.'
+        ]);
+
+        return redirect()->route('admin.events.index')->with('success', 'Data Event & Kegiatan berhasil diperbarui.');
+    }
 }

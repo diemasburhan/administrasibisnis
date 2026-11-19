@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\OrgMemberController;
 use App\Http\Controllers\Admin\CustomizerController;
+use App\Http\Controllers\Admin\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,33 +39,52 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/upload-image', [DashboardController::class, 'uploadImage'])->name('admin.upload.image');
     
-    // Posts CMS
-    Route::post('/posts/bulk', [PostController::class, 'bulkAction'])->name('admin.posts.bulk');
-    Route::post('/posts/autosave', [PostController::class, 'autoSave'])->name('admin.posts.autosave');
-    Route::resource('posts', PostController::class, ['as' => 'admin'])->except(['show']);
-    
-    // Pages CMS
-    Route::post('/pages/bulk', [PageController::class, 'bulkAction'])->name('admin.pages.bulk');
-    Route::post('/pages/autosave', [PageController::class, 'autoSave'])->name('admin.pages.autosave');
-    Route::resource('pages', PageController::class, ['as' => 'admin'])->except(['show']);
-    
-    // Lecturers CMS
-    Route::resource('lecturers', LecturerController::class, ['as' => 'admin'])->except(['show']);
+    // Routes accessible by admin and adbis staff (view, create & update for Posts, Pages, and Event & Kegiatan)
+    Route::group(['middleware' => 'role:admin,adbis staff'], function () {
+        // Posts CMS (view, create & update)
+        Route::post('/posts/autosave', [PostController::class, 'autoSave'])->name('admin.posts.autosave');
+        Route::resource('posts', PostController::class, ['as' => 'admin'])->only(['index', 'create', 'store', 'edit', 'update']);
 
-    // Org Members CMS
-    Route::resource('org-members', OrgMemberController::class, ['as' => 'admin'])->except(['show']);
-    
-    // Settings
-    Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
-    Route::post('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
+        // Pages CMS (view, create & update)
+        Route::post('/pages/autosave', [PageController::class, 'autoSave'])->name('admin.pages.autosave');
+        Route::resource('pages', PageController::class, ['as' => 'admin'])->only(['index', 'create', 'store', 'edit', 'update']);
 
-    // Customizer & Menus
-    Route::get('/customizer', [CustomizerController::class, 'indexCustomizer'])->name('admin.customizer.index');
-    Route::post('/customizer', [CustomizerController::class, 'updateCustomizer'])->name('admin.customizer.update');
-    Route::get('/menus', [CustomizerController::class, 'indexMenu'])->name('admin.menus.index');
-    Route::post('/menus', [CustomizerController::class, 'updateMenu'])->name('admin.menus.update');
+        // Event & Kegiatan Manager
+        Route::get('/events', [CustomizerController::class, 'indexEvents'])->name('admin.events.index');
+        Route::post('/events', [CustomizerController::class, 'updateEvents'])->name('admin.events.update');
+    });
 
-    // Schedule Manager
-    Route::get('/schedule', [CustomizerController::class, 'indexSchedule'])->name('admin.schedule.index');
-    Route::post('/schedule', [CustomizerController::class, 'updateSchedule'])->name('admin.schedule.update');
+    // Routes restricted to admin only
+    Route::group(['middleware' => 'role:admin'], function () {
+        // Posts CMS (delete & bulk)
+        Route::post('/posts/bulk', [PostController::class, 'bulkAction'])->name('admin.posts.bulk');
+        Route::resource('posts', PostController::class, ['as' => 'admin'])->only(['destroy']);
+
+        // Pages CMS (delete & bulk)
+        Route::post('/pages/bulk', [PageController::class, 'bulkAction'])->name('admin.pages.bulk');
+        Route::resource('pages', PageController::class, ['as' => 'admin'])->only(['destroy']);
+
+        // Lecturers CMS
+        Route::resource('lecturers', LecturerController::class, ['as' => 'admin'])->except(['show']);
+
+        // Org Members CMS
+        Route::resource('org-members', OrgMemberController::class, ['as' => 'admin'])->except(['show']);
+        
+        // Sliders CMS
+        Route::resource('sliders', SliderController::class, ['as' => 'admin'])->except(['show']);
+        
+        // Settings
+        Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
+        Route::post('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
+
+        // Customizer & Menus
+        Route::get('/customizer', [CustomizerController::class, 'indexCustomizer'])->name('admin.customizer.index');
+        Route::post('/customizer', [CustomizerController::class, 'updateCustomizer'])->name('admin.customizer.update');
+        Route::get('/menus', [CustomizerController::class, 'indexMenu'])->name('admin.menus.index');
+        Route::post('/menus', [CustomizerController::class, 'updateMenu'])->name('admin.menus.update');
+
+        // Schedule Manager
+        Route::get('/schedule', [CustomizerController::class, 'indexSchedule'])->name('admin.schedule.index');
+        Route::post('/schedule', [CustomizerController::class, 'updateSchedule'])->name('admin.schedule.update');
+    });
 });

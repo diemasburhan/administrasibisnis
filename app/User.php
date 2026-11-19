@@ -50,4 +50,16 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    public function isAdbisStaff()
+    {
+        return $this->role === 'adbis staff';
+    }
+
+    public function hasRole($roles)
+    {
+        $roles = is_array($roles) ? $roles : explode('|', $roles);
+
+        return in_array($this->role, $roles, true);
+    }
 }

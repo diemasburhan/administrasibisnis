@@ -17,6 +17,7 @@
         <!-- Toolbar with search, filters and bulk actions form -->
         <div class="table-toolbar">
             
+            @if(Auth::user()->isAdmin())
             <!-- Bulk actions Form -->
             <form action="{{ route('admin.posts.bulk') }}" method="POST" id="bulkForm" class="bulk-actions-form">
                 @csrf
@@ -27,6 +28,7 @@
                 </select>
                 <button type="submit" class="btn btn-primary btn-sm" style="height: 38px;">Terapkan</button>
             </form>
+            @endif
 
             <!-- Search and Filter Form -->
             <form action="{{ route('admin.posts.index') }}" method="GET" class="table-filters">
@@ -105,6 +107,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     
+                                    @if(Auth::user()->isAdmin())
                                     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus postingan ini?')" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
@@ -112,6 +115,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

@@ -62,6 +62,13 @@
                     </ul>
                 </li>
 
+                <li class="admin-menu-item {{ Request::is('admin/events*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.events.index') }}" class="admin-menu-link">
+                        <i class="fa-solid fa-calendar-check"></i> Event & Kegiatan
+                    </a>
+                </li>
+
+                @if(Auth::user()->isAdmin())
                 <!-- Lecturers Submenu -->
                 <li class="admin-menu-item {{ Request::is('admin/lecturers*') ? 'active' : '' }}">
                     <a href="#" class="admin-menu-link" onclick="toggleSubmenu('lecturersSubmenu', event)">
@@ -90,6 +97,22 @@
                         </li>
                         <li class="admin-submenu-item {{ Route::is('admin.org-members.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.org-members.create') }}" class="admin-submenu-link"><i class="fa-solid fa-plus"></i> Tambah Anggota</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Sliders Submenu -->
+                <li class="admin-menu-item {{ Request::is('admin/sliders*') ? 'active' : '' }}">
+                    <a href="#" class="admin-menu-link" onclick="toggleSubmenu('slidersSubmenu', event)">
+                        <i class="fa-solid fa-images"></i> Slider Hero
+                        <i class="fa-solid fa-chevron-down" style="margin-left: auto; font-size: 0.75rem;"></i>
+                    </a>
+                    <ul class="admin-submenu" id="slidersSubmenu" style="display: {{ Request::is('admin/sliders*') ? 'block' : 'none' }};">
+                        <li class="admin-submenu-item {{ Route::is('admin.sliders.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.sliders.index') }}" class="admin-submenu-link"><i class="fa-solid fa-list"></i> Semua Slider</a>
+                        </li>
+                        <li class="admin-submenu-item {{ Route::is('admin.sliders.create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.sliders.create') }}" class="admin-submenu-link"><i class="fa-solid fa-plus"></i> Tambah Baru</a>
                         </li>
                     </ul>
                 </li>
@@ -127,6 +150,7 @@
                         <i class="fa-solid fa-gears"></i> Settings
                     </a>
                 </li>
+                @endif
             </ul>
 
             <div class="admin-sidebar-footer">
@@ -149,7 +173,7 @@
                 <div class="admin-navbar-user">
                     <div class="admin-user-info">
                         <div class="admin-user-name">{{ Auth::user()->name }}</div>
-                        <div class="admin-user-role">{{ ucfirst(Auth::user()->role) }}</div>
+                        <div class="admin-user-role">{{ ucwords(Auth::user()->role) }}</div>
                     </div>
                     
                     <form action="{{ route('logout') }}" method="POST" style="margin-left: 10px;">

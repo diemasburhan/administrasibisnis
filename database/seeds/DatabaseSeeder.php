@@ -31,6 +31,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'staff',
         ]);
 
+        $adbisStaff = User::create([
+            'name' => 'Adbis Staff',
+            'email' => 'adbis.staff@lpkia.ac.id',
+            'password' => 'adbisstaffpassword',
+            'role' => 'adbis staff',
+        ]);
+
         // 2. Seed Categories
         $categories = [
             ['name' => 'Akademik', 'slug' => 'akademik'],

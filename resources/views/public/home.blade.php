@@ -2,6 +2,156 @@
 
 @section('title', 'Administrasi Bisnis LPKIA - Unggul & Siap Kerja')
 
+@section('styles')
+<style>
+    .hero-slider-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        border-radius: var(--rounded-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: var(--brand-teal-deep);
+    }
+    
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1;
+    }
+    
+    .hero-slide.active {
+        opacity: 1;
+        z-index: 2;
+    }
+    
+    .hero-slide img, 
+    .hero-slide video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    .hero-slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+        padding: 24px var(--spacing-lg);
+        color: #ffffff;
+        z-index: 3;
+        text-align: left;
+    }
+    
+    .hero-slide-caption h3 {
+        margin: 0 0 6px 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    
+    .hero-slide-caption p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.4;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+    
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(12, 35, 64, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+    
+    .slider-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: translateY(-50%) scale(1.05);
+    }
+    
+    .slider-btn.prev {
+        left: 15px;
+    }
+    
+    .slider-btn.next {
+        right: 15px;
+    }
+    
+    .slider-indicators {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+    
+    .slider-indicators .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .slider-indicators .indicator.active {
+        background: var(--primary);
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 992px) {
+        .hero-slider-container {
+            height: 350px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-slider-container {
+            height: 250px;
+        }
+        .hero-slide-caption h3 {
+            font-size: 1rem;
+        }
+        .hero-slide-caption p {
+            font-size: 0.75rem;
+        }
+    }
+</style>
+@endsection
+
 @section('content')
 
     <!-- Hero Section -->
@@ -24,38 +174,50 @@
             </div>
             
             <div class="hero-image">
-                <!-- Universo-style inquiry registration form -->
-                <div class="hero-inquiry-card">
-                    <div class="hero-inquiry-header">
-                        <h3>Join the Community</h3>
+                <div class="hero-slider-container">
+                    <div class="hero-slider">
+                        @forelse($sliders as $index => $slider)
+                            <div class="hero-slide {{ $index === 0 ? 'active' : '' }}">
+                                @if($slider->file_type === 'video')
+                                    <video src="{{ asset($slider->file_path) }}" autoplay loop muted playsinline></video>
+                                @else
+                                    <img src="{{ asset($slider->file_path) }}" alt="{{ $slider->title }}">
+                                @endif
+                                @if($slider->title || $slider->description)
+                                    <div class="hero-slide-caption">
+                                        @if($slider->title)
+                                            <h3>{{ $slider->title }}</h3>
+                                        @endif
+                                        @if($slider->description)
+                                            <p>{{ $slider->description }}</p>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
+                        @empty
+                            <!-- Default fallback slide -->
+                            <div class="hero-slide active">
+                                <img src="{{ asset('images/hero-bg.png') }}" alt="Default Slide">
+                                <div class="hero-slide-caption">
+                                    <h3>Administrasi Bisnis LPKIA</h3>
+                                    <p>Membentuk Pemimpin Administrasi & Bisnis Modern</p>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
-                    <div class="hero-inquiry-body">
-                        <form action="#" method="POST" onsubmit="alert('Terima kasih! Formulir pendaftaran informasi Anda telah dikirim. Tim LPKIA akan segera menghubungi Anda.'); return false;">
-                            <div class="form-group">
-                                <label for="student_name">Nama Lengkap</label>
-                                <input type="text" id="student_name" placeholder="Masukkan nama lengkap Anda" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="student_email">Alamat Email</label>
-                                <input type="email" id="student_email" placeholder="Masukkan alamat email Anda" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="study_level">Program Studi</label>
-                                <select id="study_level">
-                                    <option value="D3 AB">D3 Administrasi Bisnis</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="course_interest">Minat Konsentrasi</label>
-                                <select id="course_interest">
-                                    <option value="office">Administrasi Perkantoran Digital</option>
-                                    <option value="entrepreneur">Kewirausahaan Kreatif</option>
-                                    <option value="digital">Bisnis Digital</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn-submit">Kirim Pendaftaran</button>
-                        </form>
-                    </div>
+                    
+                    @if(count($sliders) > 1)
+                        <!-- Carousel Navigations -->
+                        <button class="slider-btn prev" onclick="moveSlide(-1)">&lt;</button>
+                        <button class="slider-btn next" onclick="moveSlide(1)">&gt;</button>
+                        
+                        <!-- Carousel Indicators -->
+                        <div class="slider-indicators">
+                            @foreach($sliders as $index => $slider)
+                                <span class="indicator {{ $index === 0 ? 'active' : '' }}" onclick="currentSlide({{ $index }})"></span>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -88,7 +250,7 @@
     <!-- Kaprodi Section -->
     <section class="kaprodi-section">
         <div class="container">
-            <h2 class="section-title">Kaprodi S1 & D3 Adbis</h2>
+            <h2 class="section-title">Kaprodi S1 & D3 Administrasi Bisnis</h2>
             <div class="kaprodi-grid">
                 <!-- Kaprodi S1 -->
                 <div class="kaprodi-card">
@@ -99,20 +261,6 @@
                     <div class="kaprodi-info">
                         <h3>Rini Ratnaningsih, S.Sos., M.M.</h3>
                         <p class="kaprodi-role">Ketua Program Studi S1 Administrasi Bisnis</p>
-                        <div class="kaprodi-meta">
-                            <div>
-                                <i class="fa-solid fa-graduation-cap"></i>
-                                <span>Sinta ID: <a href="https://sinta.kemdikbud.go.id/authors/profile/6825863" target="_blank">6825863</a></span>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-id-card"></i>
-                                <span>NIDN: 0409057502</span>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-envelope"></i>
-                                <a href="mailto:rini.ratnaningsih@lpkia.ac.id">rini.ratnaningsih@lpkia.ac.id</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -125,20 +273,7 @@
                     <div class="kaprodi-info">
                         <h3>Tengku Ine Hendriana, S.Pd, M.M.</h3>
                         <p class="kaprodi-role">Ketua Program Studi D3 Administrasi Bisnis</p>
-                        <div class="kaprodi-meta">
-                            <div>
-                                <i class="fa-solid fa-graduation-cap"></i>
-                                <span>Sinta ID: <a href="https://sinta.kemdikbud.go.id/authors/profile/6737406" target="_blank">6737406</a></span>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-id-card"></i>
-                                <span>NIDN: 0407108901</span>
-                            </div>
-                            <div>
-                                <i class="fa-solid fa-envelope"></i>
-                                <a href="mailto:tengku.ine@lpkia.ac.id">tengku.ine@lpkia.ac.id</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -148,7 +283,7 @@
     <!-- Peminatan Section -->
     <section class="peminatan-section">
         <div class="container">
-            <h2 class="section-title">Peminatan & Konsentrasi Bisnis</h2>
+            <h2 class="section-title">Peminatan & Konsentrasi S1 Administrasi Bisnis</h2>
             <div class="peminatan-grid">
                 <!-- Peminatan 1 -->
                 <div class="peminatan-card">
@@ -599,6 +734,76 @@
 
 @section('scripts')
 <script>
+    // Hero Slider Logic
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.slider-indicators .indicator');
+    let slideInterval;
+
+    function showSlide(index) {
+        if (slides.length === 0) return;
+        
+        if (index >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (index < 0) {
+            currentSlideIndex = slides.length - 1;
+        } else {
+            currentSlideIndex = index;
+        }
+        
+        slides.forEach((slide, idx) => {
+            if (idx === currentSlideIndex) {
+                slide.classList.add('active');
+                
+                // Play video if the active slide is a video
+                const video = slide.querySelector('video');
+                if (video) {
+                    video.currentTime = 0;
+                    video.play().catch(e => console.log('Video autoplay interrupted:', e));
+                }
+            } else {
+                slide.classList.remove('active');
+                
+                // Pause video if not active
+                const video = slide.querySelector('video');
+                if (video) {
+                    video.pause();
+                }
+            }
+        });
+        
+        indicators.forEach((indicator, idx) => {
+            if (idx === currentSlideIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+
+    function moveSlide(direction) {
+        showSlide(currentSlideIndex + direction);
+        resetSlideTimer();
+    }
+
+    function currentSlide(index) {
+        showSlide(index);
+        resetSlideTimer();
+    }
+
+    function startSlideTimer() {
+        if (slides.length > 1) {
+            slideInterval = setInterval(() => {
+                showSlide(currentSlideIndex + 1);
+            }, 6000); // Change slide every 6 seconds
+        }
+    }
+
+    function resetSlideTimer() {
+        clearInterval(slideInterval);
+        startSlideTimer();
+    }
+
     // Faculty Filter Logic
     function filterLecturers(category, button) {
         // Toggle Active Button
@@ -622,6 +827,12 @@
             }
         });
     }
+
+    // Initialize components
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlideIndex);
+        startSlideTimer();
+    });
 </script>
 @endsection
 

@@ -51,6 +51,7 @@ class HomeController extends Controller
 
         $lecturers = Lecturer::orderBy('name', 'asc')->get();
         $orgMembers = OrgMember::orderBy('sort_order', 'asc')->get();
+        $sliders = \App\Models\Slider::orderBy('sort_order', 'asc')->get();
 
         // Customizer configurations
         $sectionsOrder = json_decode(Setting::get('homepage_sections_order', '["hero","stats","tri_column","about","lecturers","downloads","news"]'), true);
@@ -150,6 +151,7 @@ class HomeController extends Controller
             'stats',
             'lecturers',
             'orgMembers',
+            'sliders',
             'sectionsOrder',
             'sectionsVisibility',
             'hero',

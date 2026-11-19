@@ -324,8 +324,8 @@
             const isFirst = idx === 0;
             const isLast = idx === flatMenuItems.length - 1;
             
-            // Can indent: only if it's not the first item, and the previous item is NOT already a submenu
-            const canIndent = idx > 0 && !flatMenuItems[idx-1].isSubmenu && !item.isSubmenu;
+            // Can indent: only if it's not the first item, and the item itself is not already a submenu
+            const canIndent = idx > 0 && !item.isSubmenu;
             // Can outdent: only if it is currently a submenu
             const canOutdent = item.isSubmenu;
 
